@@ -67,23 +67,6 @@ streamlit run app.py
 
 ---
 
-## 🌐 Deploy ke Streamlit Cloud
-
-1. Login ke [https://share.streamlit.io](https://share.streamlit.io)
-2. Hubungkan repository GitHub ini
-3. Atur file utama: `app.py`
-4. Klik **Deploy**
-
----
-
-## 📚 Referensi Akademik
-
-Penelitian ini merupakan bagian dari tugas akhir skripsi:
-
-> **"Analisis Perbandingan Algoritma CLSTM dan BPNN pada Prediksi Time Series Harga Saham ANTM"**  
-> oleh *M. Rezqy Noor Ridha* – Universitas Islam Kalimantan (UNISKA), 2025.
-
----
 
 ## 📬 Kontak
 
