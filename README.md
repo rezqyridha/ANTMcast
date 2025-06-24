@@ -67,9 +67,3 @@ streamlit run app.py
 
 ---
 
-
-## 📬 Kontak
-
-**M. Rezqy Noor Ridha**  
-📧 your.email@example.com  
-📍 Fakultas Teknologi Informasi, UNISKA
