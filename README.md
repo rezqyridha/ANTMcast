@@ -2,26 +2,26 @@
 
 **ANTMcast** adalah aplikasi berbasis _Streamlit_ untuk melakukan prediksi harga saham PT Aneka Tambang Tbk. (ANTM) dengan pendekatan _machine learning_ dan _deep learning_. Aplikasi ini membandingkan performa dua algoritma:
 
-- 🧠 **CLSTM** (Convolutional Long Short-Term Memory)
-- 🔁 **BPNN** (Backpropagation Neural Network)
+-   🧠 **CLSTM** (Convolutional Long Short-Term Memory)
+-   🔁 **BPNN** (Backpropagation Neural Network)
 
 ---
 
 ## 🚀 Fitur Utama
 
-- 📤 Upload file data saham ANTM (.csv) dari Investing.com
-- 🔍 Jalankan prediksi harga saham menggunakan model CLSTM atau BPNN
-- 📊 Evaluasi akurasi model menggunakan MAE, MSE, dan RMSE
-- 📉 Visualisasi grafik prediksi vs harga aktual
-- 📋 Bandingkan performa semua model dalam bentuk tabel dan grafik
-- ⬇️ Download hasil evaluasi model ke dalam format CSV
+-   📤 Upload file data saham ANTM (.csv) dari Investing.com
+-   🔍 Jalankan prediksi harga saham menggunakan model CLSTM atau BPNN
+-   📊 Evaluasi akurasi model menggunakan MAE, MSE, dan RMSE
+-   📉 Visualisasi grafik prediksi vs harga aktual
+-   📋 Bandingkan performa semua model dalam bentuk tabel dan grafik
+-   ⬇️ Download hasil evaluasi model ke dalam format CSV
 
 ---
 
 ## 🧠 Model yang Digunakan
 
 | Model                    | Input Fitur Utama                       |
-|--------------------------|-----------------------------------------|
+| ------------------------ | --------------------------------------- |
 | CLSTM - ANTM Saja        | Open, High, Low, Close, Volume, %Change |
 | CLSTM - ANTM + Eksternal | Close ANTM + IHSG, Harga Emas, USD/IDR  |
 | BPNN - ANTM Saja         | Sama seperti CLSTM ANTM                 |
@@ -66,27 +66,3 @@ streamlit run app.py
 ```
 
 ---
-
-## 🌐 Deploy ke Streamlit Cloud
-
-1. Login ke [https://share.streamlit.io](https://share.streamlit.io)
-2. Hubungkan repository GitHub ini
-3. Atur file utama: `app.py`
-4. Klik **Deploy**
-
----
-
-## 📚 Referensi Akademik
-
-Penelitian ini merupakan bagian dari tugas akhir skripsi:
-
-> **"Analisis Perbandingan Algoritma CLSTM dan BPNN pada Prediksi Time Series Harga Saham ANTM"**  
-> oleh *M. Rezqy Noor Ridha* – Universitas Islam Kalimantan (UNISKA), 2025.
-
----
-
-## 📬 Kontak
-
-**M. Rezqy Noor Ridha**  
-📧 your.email@example.com  
-📍 Fakultas Teknologi Informasi, UNISKA
