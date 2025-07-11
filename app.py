@@ -9,7 +9,8 @@ from model_utils import (
     reshape_for_clstm,
     reshape_for_bpnn, 
     preprocess_raw_csv,
-    summarize_model_scores
+    summarize_model_scores,
+    generate_comparison_conclusion
 )
 
 st.set_page_config(page_title="ANTMcast - Prediksi Saham ANTM", layout="centered")
@@ -31,9 +32,7 @@ if st.button("🔄 Reset Semua"):
 # ----------------- MODEL SELECTION ------------------
 st.subheader("⚙️ Pilih Model Prediksi")
 model_options = {
-    "CLSTM - ANTM Saja": "clstm_antm_only",
     "CLSTM - ANTM + Eksternal (IHSG, Emas, USD/IDR)": "clstm_antm_external",
-    "BPNN - ANTM Saja": "bpnn_antm_only",
     "BPNN - ANTM + Eksternal (IHSG, Emas, USD/IDR)": "bpnn_antm_external"
 }
 model_labels = {v: k for k, v in model_options.items()}
@@ -92,7 +91,7 @@ if st.button("🔮 Jalankan Prediksi"):
         st.warning("📎 Harap unggah file data saham terlebih dahulu.")
 
 # ----------------- PERBANDINGAN SEMUA MODEL ------------------
-if st.button("📋 Bandingkan Semua Model"):
+if st.button("📋 Bandingkan Semua Model"):  
     score_dict = {}
     missing = []
 
@@ -112,7 +111,7 @@ if st.button("📋 Bandingkan Semua Model"):
             missing.append(name)
 
     if score_dict:
-        if missing and len(missing) < len(model_options):
+        if missing:
             readable = [model_labels.get(name, name) for name in missing]
             st.warning("⚠️ Model berikut belum diprediksi dan dilewati: " + ", ".join(readable))
 
@@ -138,5 +137,11 @@ if st.button("📋 Bandingkan Semua Model"):
                 title=f"{model_labels.get(name, name).upper()} - Prediksi vs Aktual"
             )
             st.pyplot(fig)
+
+        # 🔹 Tampilkan kesimpulan sederhana
+        st.markdown("### 📝 Penjelasan & Kesimpulan Sederhana")
+        conclusion = generate_comparison_conclusion(score_dict)
+        st.info(conclusion)
+
     else:
         st.warning("📎 Belum ada model yang berhasil diprediksi untuk dibandingkan.")

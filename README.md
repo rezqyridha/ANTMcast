@@ -66,7 +66,3 @@ streamlit run app.py
 ```
 
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c7efc7de317bb32eee4056f7a46173fd58e142e

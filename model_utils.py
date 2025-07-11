@@ -203,4 +203,50 @@ def summarize_model_scores(model_score_dict: dict, round_digits=6, sort_by="MAE"
 def export_scores_to_csv(df, filename="evaluasi_model_antm.csv"):
     return df.to_csv(index=True).encode('utf-8'), filename
 
+# 🔹 11. Buat ringkasan narasi sederhana
+def generate_comparison_conclusion(score_dict):
+    """
+    Membuat narasi kesimpulan perbandingan CLSTM + eksternal dan BPNN + eksternal
+    dengan format rapi satu baris per model, mudah dipahami orang awam.
+    """
+    lines = []
 
+    # Ringkasan per model (nama disederhanakan)
+    for model_name, result in score_dict.items():
+        if "CLSTM" in model_name.upper():
+            readable_name = "CLSTM + eksternal"
+        elif "BPNN" in model_name.upper():
+            readable_name = "BPNN + eksternal"
+        else:
+            readable_name = model_name.upper()
+
+        mae_percent = result['mae'] * 100  # ubah ke persen agar familiar
+        lines.append(
+            f"📌 Model **{readable_name}** memiliki MAE sekitar {mae_percent:.2f}%, "
+            f"MSE {result['mse']:.4f}, dan RMSE {result['rmse']:.4f}.\n"
+        )
+
+    # Penjelasan interpretasi metrik
+    lines.append(
+        "✅ **Interpretasi:**\n"
+        "- Nilai MAE menunjukkan rata-rata seberapa besar prediksi meleset dari harga saham asli.\n"
+        "- Semakin kecil MAE dan RMSE, semakin akurat model memprediksi harga saham.\n"
+    )
+
+    # Penjelasan grafik
+    lines.append(
+        "📈 **Penjelasan Grafik:**\n"
+        "- Garis biru menampilkan harga saham asli (aktual).\n"
+        "- Garis oranye putus-putus menampilkan prediksi model.\n"
+        "- Pola kedua garis yang rapat dan searah menunjukkan prediksi mengikuti tren data asli.\n"
+        "- Walaupun data pengguna bisa berbeda-beda rentang waktunya, pola ini tetap valid sebagai pembanding.\n"
+    )
+
+    # Kesimpulan awam
+    lines.append(
+        "📝 **Kesimpulan:**\n"
+        "Model dengan nilai MAE dan RMSE lebih kecil, serta grafik prediksi yang pola naik-turunnya mirip dengan data asli, "
+        "lebih baik dipilih untuk memprediksi harga saham ANTM."
+    )
+
+    return "\n".join(lines)
