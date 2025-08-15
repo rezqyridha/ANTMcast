@@ -22,9 +22,7 @@
 
 | Model                    | Input Fitur Utama                       |
 | ------------------------ | --------------------------------------- |
-| CLSTM - ANTM Saja        | Open, High, Low, Close, Volume, %Change |
 | CLSTM - ANTM + Eksternal | Close ANTM + IHSG, Harga Emas, USD/IDR  |
-| BPNN - ANTM Saja         | Sama seperti CLSTM ANTM                 |
 | BPNN - ANTM + Eksternal  | Sama seperti CLSTM Eksternal            |
 
 ---
