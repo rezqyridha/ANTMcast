@@ -182,28 +182,11 @@ def preprocess_raw_csv(df, use_external=False, df_ihsg=None, df_emas=None, df_us
     return np.array(X), np.array(y)
 
 
-# 🔹 9. Ringkasan skor model
-def summarize_model_scores(model_score_dict: dict, round_digits=6, sort_by="MAE"):
-    """
-    Membuat dataframe ringkasan skor MAE, MSE, RMSE dari banyak model.
-    """
-    df = pd.DataFrame({
-        name: {
-            "MAE": score["mae"],
-            "MSE": score["mse"],
-            "RMSE": score["rmse"]
-        }
-        for name, score in model_score_dict.items()
-    }).T
-    if sort_by in df.columns:
-        df = df.sort_values(sort_by)
-    return df.round(round_digits)
-
-# 🔹 10. Ekspor skor evaluasi ke CSV
+# 🔹 9. Ekspor skor evaluasi ke CSV
 def export_scores_to_csv(df, filename="evaluasi_model_antm.csv"):
     return df.to_csv(index=True).encode('utf-8'), filename
 
-# 🔹 11. Buat ringkasan narasi sederhana
+# 🔹 10. Buat ringkasan narasi sederhana
 def generate_comparison_conclusion(score_dict):
     """
     Membuat narasi kesimpulan perbandingan CLSTM + eksternal dan BPNN + eksternal
